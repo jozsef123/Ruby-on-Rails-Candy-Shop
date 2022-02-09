@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Candies</h1>
+
+<div id="candies">
+  <% @candies.each do |candy| %>
+    <p><b>Candy Name: </b><%= candy.name %></p>
+    <p><b>Shop Name: </b><%= candy.shelf.shop.name %></p>
+    <p><b>Status: </b>
+      <% if candy.status == true %>
+        Shelved
+      <% else %>
+        Not Shelved
+      <% end %>
+    </p>
+
+    <p>
+      <%= link_to "Show this candy", candy, class: "btn btn-success" %>
+    </p>
+  <% end %>
+</div>

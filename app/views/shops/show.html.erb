@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<p><b>Shop Name: </b><%= @shop.name %></p>
+
+<p><b>Shelf Count: </b><%= @shelfCount %></p>
+<% @candies.each do |candy| %>
+  <tr>
+    <td><b>Candy Name: </b><%= candy.name %></td><br>  
+    <td><b>Shelf Id: </b><%= candy.shelf_id %></td><br><br>
+  </tr>
+<% end %>
+
+
+<div>
+  <%= link_to "Back to shops", shops_path, class: "btn btn-secondary"%>
+  <%= link_to "Destroy this shop", @shop, method: :delete, class: "btn btn-danger", form_class: "myButton"%>
+</div>

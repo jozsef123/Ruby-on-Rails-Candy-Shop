@@ -1,0 +1,37 @@
+<h1>Editing candy</h1>
+
+<%= form_for @candy do |form| %>
+  <%= form.label 'Candy Name' %><br>
+  <%= form.text_field :name, readonly: true %><br>
+
+  <% if @status == false %>
+    <div>
+
+    <% if @shelfCount == 0 %>
+      Add a shelf to the shop. Currently, there are no valid shelves available in the shop.
+      <%= link_to "Create New shelf", new_shelf_path, class: "btn btn-primary" %> 
+    <% else %>
+      Select Shelf to store candy on <br>
+      <%= form.select :shelf_id, Shelf.all.where(status: true, 
+        shop_id: @candy.shelf.shop.id).collect{|s| [s.id, s.id]}, include_blank: true,
+        id: :candy_shelf_id, prompt: "Shelf Id"
+       %>
+    <% end %>
+
+  </div>
+  <% else %>
+    <h3>Click Submit to remove candy from the shelf</h3>
+  <% end %>
+
+  <br>
+  <% if @status == true || @shelfCount > 0 %>
+    <%= form.submit "Submit Candy" %>
+  <% end %>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Show this candy", @candy, class:"btn btn-success" %> 
+  <%= link_to "Back to candies", candies_path, class:"btn btn-secondary" %>
+</div>

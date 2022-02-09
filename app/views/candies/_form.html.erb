@@ -1,0 +1,30 @@
+<%= form_with(model: candy) do |form| %>
+  <% if candy.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(candy.errors.count, "error") %> prohibited this candy from being saved:</h2>
+      <ul>
+        <% candy.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+    <br></br>
+  </div>
+
+  <!-- the Shop Id is really the shelf Id, because I am 
+    storing the candy on the shelf that is in the back of the store -->
+  <div>
+    Select Shop to store candy in <br>
+  <%= form.select :shelf_id, Shelf.all.where(status: false).collect{|s| [s.shop.name, s.id]}, include_blank: true,
+    id: :candy_shelf_id, prompt: "Shop Name" %>
+    <br></br>
+  </div>
+  <div>
+    <%= form.submit :Submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>

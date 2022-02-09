@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<p><b>Shelf Id: </b><%= @shelf.id %></p>
+<p><b>Shop Name: </b><%= @shelf.shop.name %></p>
+<p><b>Candy count: </b><%= @candyCount %></p>
+<% @candyNames.each do |name| %>
+  <tr>
+    <td><b>Candy Name: </b><%= name %></td><br>  
+  </tr>
+<% end %>
+
+<div>
+  <br>
+  <%= link_to "Back to shelves", shelves_path, class: "btn btn-secondary" %>
+  <%= button_to "Destroy this shelf", @shelf, method: :delete, class: "btn btn-danger",form_class: "myButton" %>
+</div>

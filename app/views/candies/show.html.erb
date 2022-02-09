@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<p><b>Candy Name: </b><%= @candy.name %></p>
+<p><b>Shop Name: </b><%= @candy.shelf.shop.name %></p>
+<p><b>Status: </b>
+  <% if @candy.status == true %>
+    Shelved
+  <% else %>
+    Not Shelved
+  <% end %>
+</p>
+
+<div>
+  <%= link_to "Edit this candy", edit_candy_path(@candy), class: "btn btn-warning" %> 
+  <%= link_to "Back to candies", candies_path, class: "btn btn-secondary" %>
+</div>

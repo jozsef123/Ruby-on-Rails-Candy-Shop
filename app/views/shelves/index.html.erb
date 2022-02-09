@@ -1,0 +1,13 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Shelves</h1>
+
+<div id="shelves">
+  <% @shelves.each do |shelf| %>
+    <p><b>Shelf Id: </b><%= shelf.id %></p>
+    <p><b>Shop Name: </b><%= shelf.shop.name %></p>
+    <p>
+      <%= link_to "Show this shelf", shelf, class: "btn btn-success" %>
+    </p>
+  <% end %>
+</div>
